@@ -38,6 +38,82 @@ public class LinkedListMain {
 		Node<Integer> partitioned = partition(n1, 5);
 		print(partitioned);
 		print(n1);
+
+
+		Node<Integer> a1 = new Node<Integer>(new Integer(7));
+		Node<Integer> a2 = new Node<Integer>(new Integer(1));
+		Node<Integer> a3 = new Node<Integer>(new Integer(6));
+		a1.setNext(a2);
+		a2.setNext(a3);
+
+		Node<Integer> b1 = new Node<Integer>(new Integer(1));
+		Node<Integer> b2 = new Node<Integer>(new Integer(7));
+		//Node<Integer> b3 = new Node<Integer>(new Integer(7));
+		b1.setNext(b2);
+		//b2.setNext(b3);
+
+		a3.setNext(b1);
+
+		//print(addLists(a1, b1, 0));
+
+		print(a1);
+
+		System.out.println(isPalindrome(a1));
+		
+	}
+
+
+	private static boolean isPalindrome(Node<Integer> head) {
+		Node<Integer> slow = head;
+		Node<Integer> fast = head;
+
+		Stack<Integer> stack = new Stack<Integer>();
+
+		while (fast != null && fast.getNext() != null) {
+			stack.push(slow.getValue());
+			slow = slow.getNext();
+			fast = fast.getNext().getNext();
+		}
+
+		if (fast != null) {
+			slow = slow.getNext();
+		}
+
+		while (slow != null) {
+			if (slow.getValue() != stack.pop().intValue()) {
+				return false;
+			}
+			slow = slow.getNext();
+		}
+		return true;
+	}
+
+	private static Node<Integer> addLists(Node<Integer> firstNode, 
+											Node<Integer> secondNode, int carry) {
+		if (firstNode == null && secondNode == null && carry == 0) {
+			return null;
+		}
+
+		int value = carry;
+		if (firstNode != null) {
+			value += firstNode.getValue();
+		}
+
+		if (secondNode != null) {
+			value += secondNode.getValue();
+		}
+
+		Node<Integer> result = new Node<Integer>(new Integer(0));
+
+		result.setValue(new Integer(value % 10));
+
+		if (firstNode != null || secondNode != null) {
+			Node<Integer> next = addLists(firstNode == null ? null : firstNode.getNext(),
+				secondNode == null ? null : secondNode.getNext(), value >= 10 ? 1 : 0);
+			result.setNext(next);
+		}
+
+		return result;
 	}
 
 	private static Node<Integer> partition(Node<Integer> curr, int x) {
