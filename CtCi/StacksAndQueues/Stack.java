@@ -21,5 +21,19 @@ public class Stack<T> {
 		return top.getValue();   // assuming that stack has element
 	}
 
+	public void print() {
+		Node<T> node = top;
+
+		while (node != null) {
+			System.out.print(node.getValue() + " ");
+			node = node.getNext();
+		}
+		System.out.println();
+	}
+
+	public boolean isEmpty() {
+		return top == null;
+	}
+
 }
 

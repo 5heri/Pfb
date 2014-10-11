@@ -22,5 +22,15 @@ public class Queue<T> {
 		return null;
 	}
 
+	public void print() {
+		Node<T> node = first;
+
+		while (node != null) {
+			System.out.print(node.getValue() + " ");
+			node = node.getNext();
+		}
+		System.out.println();
+	}
+
 }
 
