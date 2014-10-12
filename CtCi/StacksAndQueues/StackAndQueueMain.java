@@ -43,6 +43,33 @@ public class StackAndQueueMain {
 	//n8.setNext(n9);
 
 
+	Stack<Integer> stackToSort = new Stack<Integer>();
+
+	stackToSort.push(new Integer(1));
+	stackToSort.push(new Integer(9));
+	stackToSort.push(new Integer(5));
+	stackToSort.push(new Integer(11));
+	stackToSort.push(new Integer(7));
+	stackToSort.push(new Integer(2));
+
+	sortStack(stackToSort).print();
+
+
+
+	}
+
+	public static Stack<Integer> sortStack(Stack<Integer> firstStack) {
+		Stack<Integer> secondStack = new Stack<Integer>();
+
+		while (!firstStack.isEmpty()) {
+			Integer tmp = firstStack.pop();
+
+			while(!secondStack.isEmpty() && secondStack.peek() > tmp) {
+				firstStack.push(secondStack.pop());
+			}
+			secondStack.push(tmp);
+		}
+		return secondStack;
 	}
 
 	public void print(Node<Integer> head) {
