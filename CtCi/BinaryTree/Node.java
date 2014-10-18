@@ -39,4 +39,10 @@ public class Node {
 	public Node getRight() {
 		return right;
 	}
+
+	@Override
+	public boolean equals(Object object) {
+		Node n = (Node) object;
+		return value == n.getValue();
+	}
 }
