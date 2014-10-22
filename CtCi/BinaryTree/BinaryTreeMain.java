@@ -124,7 +124,7 @@ public class BinaryTreeMain {
 		}
 
 		boolean firstOnLeft  = contains(root.getLeft(), first);
-		boolean secondOnLeft = contains(root.getRight(), second);
+		boolean secondOnLeft = contains(root.getLeft(), second);
 
 		if (firstOnLeft != secondOnLeft) {
 			return root;
