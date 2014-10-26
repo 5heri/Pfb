@@ -29,7 +29,6 @@ public class Q_16 {
 		return curr;
 	}
 
-
 	private static void printLL(Node head) {
 			Node curr = head;
 			while (curr != null) {
