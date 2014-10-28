@@ -27,9 +27,9 @@ public class Queue {
 		}
 	}
 
-	public Node dequeue() throws Exception {
+	public int dequeue() throws Exception {
 		if (first != null) {
-			Node r = first;
+			int r = first.getValue();
 			first = first.getNext();
 
 			if (midSetter) {
@@ -46,5 +46,13 @@ public class Queue {
 
 	public Node getMiddle() {
 		return middle;
+	}
+
+	public boolean isEmpty() {
+		return first == null;
+	}
+
+	public int getFirst() {
+		return first.getValue();
 	}
 }

@@ -8,8 +8,8 @@ public class QueueTestMain {
 		q.enqueue(3);
 		q.enqueue(4);
 
-		System.out.println(q.dequeue().getValue()+ " " + q.dequeue().getValue() 
-			+ " " + q.dequeue().getValue() + " " + q.dequeue().getValue());
+		System.out.println(q.dequeue() + " " + q.dequeue() 
+			+ " " + q.dequeue() + " " + q.dequeue());
 
 		// q.dequeue();  // throw Exception
 
