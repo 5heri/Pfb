@@ -18,18 +18,7 @@ public class Graph {
 	// Assuming a vertex can be connected to another vertex only once
 	public void removeVertex(int toRemove) {
 		for (Vertex v : adjacentLists) {
-
 			remove(v, toRemove);
-			/*Node vHead = v.getAdjList();
-			if (vHead.getValue() == toRemove) {
-				vHead = vHead.getNext();
-				v.setAdjList(vHead);
-			} else {
-				Node prev = findPrev(v.getAdjList(), toRemove);
-				if (prev.getNext() != null) {
-					prev.setNext(prev.getNext().getNext());
-				}
-			}*/
 		}
 		adjacentLists.set(toRemove - 1, null);
 	} 
@@ -63,36 +52,10 @@ public class Graph {
 		Vertex fromV = adjacentLists.get(from - 1);
 		remove(fromV, to);
 
-		/*Node fromHead = fromV.getAdjList();
-		if (fromHead.getValue() == to) {
-			fromHead = fromHead.getNext();
-			fromV.setAdjList(fromHead);
-		} else {
-			Node prev = findPrev(fromV.getAdjList(), to);
-			if (prev.getNext() == null) {
-				return; // there is no edge
-			}
-			prev.setNext(prev.getNext().getNext());
-		}*/
-
-
 		// Since edges may be in both directions
 
 		Vertex toV = adjacentLists.get(to - 1);
 		remove(toV, from);
-		
-		/*Node toHead = toV.getAdjList();
-
-		if (toHead.getValue() == from) {
-			toHead = toHead.getNext();
-			toV.setAdjList(toHead);
-		} else {
-			Node prev = findPrev(toV.getAdjList(), from);
-			if (prev.getNext() == null) {
-				return;
-			}
-			prev.setNext(prev.getNext().getNext());
-		}*/
 	}
 
 	@Override
@@ -112,12 +75,12 @@ public class Graph {
 					sb.append(curr.getValue());	
 				}
 				sb.append('\n');
-			}
-			
+			}	
 		}
 		return sb.toString();
 	}
 
+	// Remove -value- from the adjancency list of -v-
 	private void remove(Vertex v, int value) {
 		Node vHead = v.getAdjList();
 		if (vHead.getValue() == value) {
