@@ -25,6 +25,5 @@ public class MainEncodeDecode {
 
 		System.out.println(tc.encode(root));
 
-
 	}
 }
