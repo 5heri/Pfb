@@ -20,18 +20,18 @@ public class TreeCoding {
 	 */
 	
 	public String encode(Node node) {
-		LinkedList<Node> st = new LinkedList<Node>();
+		LinkedList<Node> q = new LinkedList<Node>();
 		StringBuilder sb = new StringBuilder();
-		st.add(node);
+		q.add(node);
 
 		sb.append(node.getValue());
 
-		while (!st.isEmpty()) {
-			Node top = st.remove();
+		while (!q.isEmpty()) {
+			Node top = q.remove();
 			sb.append(' ');
 			if (top.getLeft() != null) {
 				sb.append(top.getLeft().getValue());
-				st.add(top.getLeft());
+				q.add(top.getLeft());
 			} else {
 				sb.append('#');
 			}
@@ -39,7 +39,7 @@ public class TreeCoding {
 			
 			if (top.getRight() != null) {
 				sb.append(top.getRight().getValue());
-				st.add(top.getRight());
+				q.add(top.getRight());
 			} else {
 				sb.append('#');
 			}
